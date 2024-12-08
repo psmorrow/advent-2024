@@ -1,5 +1,4 @@
 const fs = require("fs");
-const { get } = require("http");
 
 const EMPTY_MARKER = ".";
 
@@ -40,7 +39,6 @@ function getAntinodes(locations, withHarmonics) {
           let ay = y1 + dy;
           let ax = x1 + dx;
 
-          //   let numAdded = 0;
           do {
             if (!isLocationOnMap(ay, ax, input)) break;
 
@@ -48,21 +46,6 @@ function getAntinodes(locations, withHarmonics) {
             const current = antinodes.get(key) ?? [];
             current.push(antinode);
             antinodes.set(key, current);
-            // numAdded++;
-
-            // if (numAdded === 2) {
-            //   const antinode1 = `${y1},${x1}`;
-            //   const current1 = antinodes.get(key) ?? [];
-            //   current1.push(antinode1);
-            //   antinodes.set(key, current1);
-            //   numAdded++;
-
-            //   const antinode2 = `${y2},${x2}`;
-            //   const current2 = antinodes.get(key) ?? [];
-            //   current2.push(antinode2);
-            //   antinodes.set(key, current2);
-            //   numAdded++;
-            // }
 
             if (!withHarmonics) break;
 
