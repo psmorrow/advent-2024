@@ -4,7 +4,7 @@ const BLANK_MARKER = ".";
 const GRID_SIZE_X = 101; // sample = 11;
 const GRID_SIZE_Y = 103; // sample = 7;
 const CHECK_IN_SECONDS = 100;
-const CHECK_FOR_CHRISTMAS_TREE_IN_SECONDS = 10_000;
+const CHECK_FOR_CHRISTMAS_TREE_MAX_SECONDS = 10_000;
 
 function parseLine(line) {
   const pattern = /p=(-?\d+,-?\d+)\s+v=(-?\d+,-?\d+)/;
@@ -131,7 +131,7 @@ function checkGridForChristmasTreePattern(grid) {
 function findChristmasTreePattern(data) {
   let foundInSeconds = 0;
 
-  while (foundInSeconds++ < CHECK_FOR_CHRISTMAS_TREE_IN_SECONDS) {
+  while (foundInSeconds++ < CHECK_FOR_CHRISTMAS_TREE_MAX_SECONDS) {
     data = moveRobotsOneSecond(data);
     const grid = placeRobotsOnGrid(data);
     if (checkGridForChristmasTreePattern(grid)) {
